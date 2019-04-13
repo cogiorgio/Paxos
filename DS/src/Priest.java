@@ -3,11 +3,17 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 public class Priest {
-    private int port;
-    private int listening=0;
+    private LinkedList<Priest> group;
+    public int port;
+    private String address;
+    public int listening=0;
     //Preliminary Protocol
     private Vote last_vote; //LastVote sent by the priest
     private Ballot next_ballot;
@@ -26,7 +32,7 @@ public class Priest {
     }
 
     public synchronized Vote getPrev_vote() {
-        return prev_vote;
+        return prevVote;
     }
 
     public synchronized Ballot getNext_ballot() {
@@ -39,7 +45,7 @@ public class Priest {
 
 
     public synchronized void setPrev_vote(Vote prev_vote) {
-        this.prev_vote = prev_vote;
+        this.prevVote = prev_vote;
     }
 
     public synchronized void setNext_ballot(Ballot next_ballot) {
@@ -51,25 +57,45 @@ public class Priest {
     }
 
     public void listen(){
-        try {
-            ServerSocket s = new ServerSocket(port);
-            while(listening==1) {
-                Socket client = s.accept();
-                Thread t=new Thread(new PriestRunnable(client,this));
-                t.start();
-            }
-
-        }catch(Exception e){};
-
-
+        Thread t=new Thread(new PriestRunnable(this));
+        t.start();
     }
     //priest starts a ballot choosing its number,decree,quorum;
-    public void startBallot(){
+    public void startBallot(String decree){
+        int BallotNumber;
+        if (lastTried==null){
+            BallotNumber=0;
+        }else{
+            BallotNumber=+ lastTried.getNumber();
+        }
+        LinkedList<Priest> quorum=chooseQuorum();
+        Ballot b=new Ballot(decree,quorum,this.group,BallotNumber);
+        this.lastTried=b;
+        Iterator<Priest> i=quorum.iterator();
+        PrintWriter out;
+        while(i.hasNext()){
+            Priest p=i.next();
+            try {
+                Socket s = new Socket(p.address, this.port);
+                out = new PrintWriter(s.getOutputStream(), true);
+                out.println("NextBallot\n"+lastTried.getNumber()+"\n"+this.address+"\n"+this.port);
+                s.close();
+            }catch(Exception e){}
+        }
+
 
     }
     //priest choose a majority for the quorum
-    public List<Priest> chooseQuorum(){
-        return null;
+    public LinkedList<Priest> chooseQuorum(){
+        LinkedList<Priest> quorum=new LinkedList<Priest>();
+        Iterator<Priest> i= group.iterator();
+        int c=0;
+        while(i.hasNext()){
+            if(c%2==0){
+                quorum.add(i.next());
+            }
+        }
+        return quorum;
     }
 
     //decide the next ballot number (> lastTried) and send it
@@ -79,6 +105,69 @@ public class Priest {
 
     //response to the next ballot message,b must be > nextBal or it is ignored, last vote must be equal prev vote
     public void LastVote(Ballot b,Vote v){
+
+    }
+    public synchronized void LastVoteR(String decree, String ballotNumber,String address,String port){
+
+        //check if it is an older ballot
+        if(parseInt(ballotNumber)!=lastTried.getNumber()){
+            return;
+        }
+        //check if quorum is already been reached
+        if(this.lastTried.getVoted()==1){
+            return;
+        }
+        //check if it already voted
+        Iterator b=lastTried.getVoting().iterator();
+        Priest p;
+        while(b.hasNext()){
+            p=(Priest)b.next();
+            if(p.address==address && p.port==p.port){
+                return;
+            }
+        }
+        //the decree must be the youngest one between priests that already voted
+        if(decree!=null){
+            if(lastTried.getVoting().isEmpty()){
+                lastTried.setDecree(decree);
+                lastTried.setYoungerBallot(parseInt(ballotNumber));
+            }
+            else {
+                if(parseInt(ballotNumber)<lastTried.getYoungerBallot()){
+                    lastTried.setYoungerBallot(parseInt(ballotNumber));
+                }
+            }
+
+        }
+        //add new priest to voting ones
+        lastTried.addVoting(new Priest(parseInt(port),address));
+
+        //check if all quorum voted,if true send beginBallot
+        LinkedList<Priest> l=lastTried.getVoting();
+        b=lastTried.getQuorum().iterator();
+        while(b.hasNext()){
+            p=(Priest)b.next();
+            if(!l.contains(p)){
+                return;
+            }
+        }
+
+        //if it arrives here it means that we can send our beginBallot and end this step
+        lastTried.setVoted(1);
+        b=lastTried.getQuorum().iterator();
+        PrintWriter out;
+        while(b.hasNext()){
+            p=(Priest)b.next();
+            try {
+                Socket s = new Socket(p.address, this.port);
+                out = new PrintWriter(s.getOutputStream(), true);
+                out.println("BeginBallot\n"+lastTried.getNumber()+"\n"+lastTried.getDecree()+"\n"+this.address+"\n"+this.port);
+                s.close();
+            }catch(Exception e){}
+        }
+
+
+
 
     }
 

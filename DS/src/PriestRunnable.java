@@ -1,23 +1,19 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class PriestRunnable implements Runnable {
-    private Socket sock;
-    private PrintWriter out;
-    private BufferedReader in;
     private Priest pr;
-    public PriestRunnable(Socket sock,Priest pr){
-      this.sock=sock;
+    public PriestRunnable(Priest pr){
+        this.pr=pr;
     }
     public void run() {
         try {
-            out = new PrintWriter(sock.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-            String s=in.readLine();
-            if(s.charAt(0)=='1'){
-                
+            ServerSocket s = new ServerSocket(pr.port);
+            while(pr.listening==1) {
+                Socket client = s.accept();
             }
         }catch(Exception e){
             System.out.println("errore nella generazione del socket");
