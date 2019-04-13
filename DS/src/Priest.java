@@ -22,7 +22,8 @@ public class Priest {
     //Basic Protocol
     private Ballot lastTried; // last ballot that p tried to initiate.
     private Vote prevVote; //vote cast by p ub the highest ballot in which he voted.
-    private Ballot nexBal; //largest value of b for which p has sent a LastVote(b,v) msg.
+    //already exist next_ballot
+    private Ballot nextBal; //largest value of b for which p has sent a LastVote(b,v) msg.
 
 
     //possibile ottimizzazione tra fat and slim per scegliere il quorum
@@ -69,12 +70,12 @@ public class Priest {
             BallotNumber=+ lastTried.getNumber();
         }
         LinkedList<Priest> quorum=chooseQuorum();
-        Ballot b=new Ballot(decree,quorum,this.group,BallotNumber);
+        Ballot b = new Ballot(decree,quorum,this.group,BallotNumber);
         this.lastTried=b;
-        Iterator<Priest> i=quorum.iterator();
+        Iterator<Priest> i = quorum.iterator();
         PrintWriter out;
         while(i.hasNext()){
-            Priest p=i.next();
+            Priest p = i.next();
             try {
                 Socket s = new Socket(p.address, this.port);
                 out = new PrintWriter(s.getOutputStream(), true);
@@ -87,8 +88,9 @@ public class Priest {
     }
     //priest choose a majority for the quorum
     public LinkedList<Priest> chooseQuorum(){
-        LinkedList<Priest> quorum=new LinkedList<Priest>();
-        Iterator<Priest> i= group.iterator();
+        LinkedList<Priest> quorum = new LinkedList<Priest>();
+        Iterator<Priest> i = group.iterator();
+        //c is always 0????
         int c=0;
         while(i.hasNext()){
             if(c%2==0){
@@ -99,7 +101,19 @@ public class Priest {
     }
 
     //decide the next ballot number (> lastTried) and send it
-    public void NextBallot(Ballot b){
+    public void NextBallot(Ballot b, String pAddress, int pPort){
+        if(b.getNumber() <= next_ballot.getNumber())
+            //message ignored
+            return;
+        else{
+            this.next_ballot = b;
+            try {
+                Socket s = new Socket(pAddress, pPort);
+                out = new PrintWriter(s.getOutputStream(), true);
+                out.println("LastVote\n" + lastTried.getNumber() + "\n" + this.prevVote + this.address + "\n" + this.port);
+                s.close();
+            }catch (Exception e){}
+        }
 
     }
 
@@ -107,6 +121,8 @@ public class Priest {
     public void LastVote(Ballot b,Vote v){
 
     }
+
+    ///decree is the prevVote????
     public synchronized void LastVoteR(String decree, String ballotNumber,String address,String port){
 
         //check if it is an older ballot
@@ -122,6 +138,7 @@ public class Priest {
         Priest p;
         while(b.hasNext()){
             p=(Priest)b.next();
+            //p.port == port ???
             if(p.address==address && p.port==p.port){
                 return;
             }
@@ -165,13 +182,20 @@ public class Priest {
                 s.close();
             }catch(Exception e){}
         }
-
-
-
-
     }
 
     public void BeginBallot(Ballot b,String decree){
+        if(b.getNumber() != next_ballot.getNumber())
+            return;
+        else{
+            this.prevVote = new Vote(b, "newDecree",this);
+            try {
+                Socket s = new Socket(p.address, this.port);
+                out = new PrintWriter(s.getOutputStream(), true);
+                out.println("Voted\n"+b+"\n"+"\n"+this.address+"\n"+this.port);
+                s.close();
+            }catch(Exception e){}
+        }
 
     }
     //sends the vote,condition : b = nextBallot
@@ -180,7 +204,6 @@ public class Priest {
     }
     //sends a success message
     public void Success(String decree){
-
     }
 
     public synchronized void stopListening(){
