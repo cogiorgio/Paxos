@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Paxos.iml" filepath="$PROJECT_DIR$/.idea/Paxos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PaxosDS/PaxosDS.iml" filepath="$PROJECT_DIR$/PaxosDS/PaxosDS.iml" />
     </modules>
   </component>
 </project>
