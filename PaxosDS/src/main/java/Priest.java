@@ -18,7 +18,7 @@ public class Priest {
     //Preliminary Protocol
     //Basic Protocol
     private Ballot lastTried; // last ballot that p tried to initiate.
-    private Vote prevVote; //vote cast by p ub the highest ballot in which he voted.
+    private Vote prevVote; //vote cast by p on the highest ballot in which he voted.
     private int nextBal; //largest value of b for which p has sent a LastVote(b,v) msg.
 
     //possibile ottimizzazione tra fat and slim per scegliere il quorum
@@ -27,6 +27,8 @@ public class Priest {
         //TODO
         this.address = ip_address;
         this.port=port;
+        nextBal = -1;
+        prevVote = new Vote(-1,"infinity");
     }
 
     public void setGroup(LinkedList<Priest> group) {
@@ -62,22 +64,22 @@ public class Priest {
         PrintWriter out;
         while(i.hasNext()){
             Priest p = i.next();
+            System.out.println("Priest " + p.address + ":" + p.port);
             try {
-                Socket s = new Socket(p.address, this.port);
+                Socket s = new Socket(p.address, p.port);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("NextBallot-"+lastTried.getNumber()+"-"+this.address+"-"+this.port);
                 s.close();
-            }catch(Exception e){}
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
-
-
     }
     //TODO
     //priest choose a majority for the quorum
     public LinkedList<Priest> chooseQuorum(){
         LinkedList<Priest> quorum = new LinkedList<Priest>();
         Iterator<Priest> i = group.iterator();
-        //c is always 0????
         int c=0;
         while(i.hasNext()){
             if(c%2==0){
@@ -97,12 +99,16 @@ public class Priest {
             this.nextBal = (parseInt(ballot_num));
             PrintWriter out;
             try {
+                System.out.println("I'm " + this.port + "connecting to " + pPort);
                 Socket s = new Socket(pAddress, parseInt(pPort));
+                System.out.println("connected to " + pAddress + ":" + pPort);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("LastVote-" + ballot_num + "-" + this.prevVote.getDecree() + "-" + this.prevVote.getBallotNumber() +
                                 "-" + this.address + "-" + this.port);
                 s.close();
-            }catch (Exception e){}
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
     }
@@ -168,7 +174,9 @@ public class Priest {
                 out.println("BeginBallot-" + lastTried.getNumber() + "-" + lastTried.getDecree() + "-" + this.address
                             + "-" + this.port);
                 s.close();
-            }catch(Exception e){}
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -183,7 +191,9 @@ public class Priest {
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("Voted-" + ballotNumber + "-" + this.address + "-" + this.port);
                 s.close();
-            }catch(Exception e){}
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
 
     }
@@ -235,7 +245,9 @@ public class Priest {
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("Success-" + lastTried.getDecree() + "-" + this.address + "-" + this.port);
                 s.close();
-            }catch(Exception e){}
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
 
     }

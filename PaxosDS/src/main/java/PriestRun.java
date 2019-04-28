@@ -22,9 +22,11 @@ public class PriestRun implements Runnable {
             System.out.println("String read:" + s);
             String[] l=s.split("-");
             if(l[0].equals("NextBallot")){
+                System.out.println("I'm "+ pr.port+  " NextBallot n "+ l[1] + " from " + l[2] + ":" + l[3] );
                 pr.NextBallot(l[1],l[2],l[3]);
             }
             if(l[0].equals("LastVote")){
+                System.out.println("LastVote from " + l[4] + ":" + l[5]);
                 pr.LastVote(l[1],l[2],l[3],l[4],l[5]);
             }
             if(l[0].equals("BeginBallot")){

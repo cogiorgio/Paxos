@@ -8,11 +8,11 @@ public class StartPriest {
         group.add(new Priest("localhost",4002));
         p.setGroup(group);
         p.listen();
-        try{
+        /*try{
             System.in.read();
         }
         catch (Exception e){}
-
+        */
         //p.startBallot("secondoDecree");
     }
 }
