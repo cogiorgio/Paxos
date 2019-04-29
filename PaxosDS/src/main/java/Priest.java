@@ -169,7 +169,7 @@ public class Priest {
         while(b.hasNext()){
             p=(Priest)b.next();
             try {
-                Socket s = new Socket(p.address, this.port);
+                Socket s = new Socket(p.address, p.port);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("BeginBallot-" + lastTried.getNumber() + "-" + lastTried.getDecree() + "-" + this.address
                             + "-" + this.port);
@@ -203,10 +203,12 @@ public class Priest {
         if(parseInt(ballotNumber)!=lastTried.getNumber()){
             return;
         }
+        System.out.println("NOT OLD BALLOT");
         //check if quorum is already been reached
-        if(this.lastTried.getVoted()==1){
+        //SERVE??*************************************
+        /*if(this.lastTried.getVoted()==1){
             return;
-        }
+        }*/
         //check if it already voted
         Iterator b=lastTried.getVoting().iterator();
         Priest p;
@@ -216,6 +218,7 @@ public class Priest {
                 return;
             }
         }
+        System.out.println("NOT ALREADY VOTED");
 
         //add new priest to voting ones
         for(Priest priest : this.group){
@@ -232,8 +235,9 @@ public class Priest {
                 return;
             }
         }
+        System.out.println("ALL VOTED");
 
-        //if it arrives here it means that we can send our beginBallot and end this step
+        //if it arrives here it means that we can send our Success and end this step
         lastTried.setVoted(1);
         lastTried.emptyVoting();
         b=lastTried.getQuorum().iterator();
@@ -241,7 +245,7 @@ public class Priest {
         while(b.hasNext()){
             p=(Priest)b.next();
             try {
-                Socket s = new Socket(p.address, this.port);
+                Socket s = new Socket(p.address, p.port);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("Success-" + lastTried.getDecree() + "-" + this.address + "-" + this.port);
                 s.close();
