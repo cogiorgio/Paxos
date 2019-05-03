@@ -148,7 +148,7 @@ public class Priest {
         }
         //add new priest to voting ones
         for(Priest priest : this.group){
-            if (priest.address == address && priest.port == parseInt(port))
+            if (priest.address.equals(address) && priest.port == parseInt(port))
                 lastTried.addVoting(priest);
         }
         //check if all quorum voted,if true send beginBallot
@@ -163,7 +163,10 @@ public class Priest {
 
         //if it arrives here it means that we can send our beginBallot and end this step
         lastTried.setVoted(1);
+        //this also empty group, why??
+        LinkedList<Priest> temp = (LinkedList<Priest>) this.group.clone();
         lastTried.emptyVoting();
+        this.group = temp;
         b=lastTried.getQuorum().iterator();
         PrintWriter out;
         while(b.hasNext()){
@@ -204,11 +207,7 @@ public class Priest {
             return;
         }
         System.out.println("NOT OLD BALLOT");
-        //check if quorum is already been reached
-        //SERVE??*************************************
-        /*if(this.lastTried.getVoted()==1){
-            return;
-        }*/
+
         //check if it already voted
         Iterator b=lastTried.getVoting().iterator();
         Priest p;
@@ -221,8 +220,9 @@ public class Priest {
         System.out.println("NOT ALREADY VOTED");
 
         //add new priest to voting ones
+        //group cosa sarebbe? se metto lastTried.voting = a this.group è giusto?
         for(Priest priest : this.group){
-            if (priest.address == address && priest.port == parseInt(port))
+            if (priest.address.equals(address) && priest.port == parseInt(port))
                 lastTried.addVoting(priest);
         }
 
