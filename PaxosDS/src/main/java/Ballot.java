@@ -6,14 +6,13 @@ public class Ballot {
     private int youngerBallot=0;
     private String decree;
     private LinkedList<Priest> quorum;
-    private LinkedList<Priest> voting;
+    private LinkedList<Priest> voting=new LinkedList<Priest>();
     private int number;
 
 
-    public Ballot(String decree,LinkedList<Priest> quorum,LinkedList<Priest> voting,int number){
+    public Ballot(String decree,LinkedList<Priest> quorum,int number){
         this.decree=decree;
         this.quorum=quorum;
-        this.voting=voting;
         this.number=number;
     }
 

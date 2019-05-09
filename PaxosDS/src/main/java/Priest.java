@@ -3,10 +3,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
@@ -20,7 +17,7 @@ public class Priest {
     private Ballot lastTried; // last ballot that p tried to initiate.
     private Vote prevVote; //vote cast by p on the highest ballot in which he voted.
     private int nextBal; //largest value of b for which p has sent a LastVote(b,v) msg.
-
+    private int trust=0;
     //possibile ottimizzazione tra fat and slim per scegliere il quorum
 
     public Priest(String ip_address,int port) {
@@ -28,7 +25,15 @@ public class Priest {
         this.address = ip_address;
         this.port=port;
         nextBal = -1;
-        prevVote = new Vote(-1,"infinity");
+        prevVote = new Vote(0,"infinity");
+    }
+
+    public synchronized int getTrust() {
+        return trust;
+    }
+
+    public synchronized void addTrust(){
+        this.trust+=1;
     }
 
     public void setGroup(LinkedList<Priest> group) {
@@ -55,10 +60,10 @@ public class Priest {
         if (lastTried==null){
             BallotNumber=0;
         }else{
-            BallotNumber=+ lastTried.getNumber();
+            BallotNumber = lastTried.getNumber() + 1;
         }
         LinkedList<Priest> quorum = chooseQuorum();
-        Ballot b = new Ballot(decree,quorum,this.group,BallotNumber);
+        Ballot b = new Ballot(decree,quorum,BallotNumber);
         this.lastTried=b;
         Iterator<Priest> i = quorum.iterator();
         PrintWriter out;
@@ -80,12 +85,31 @@ public class Priest {
     public LinkedList<Priest> chooseQuorum(){
         LinkedList<Priest> quorum = new LinkedList<Priest>();
         Iterator<Priest> i = group.iterator();
+        ArrayList<Integer> ord=new ArrayList<>();
         int c=0;
+        int length=0;
         while(i.hasNext()){
-            if(c%2==0){
-                quorum.add(i.next());
+            ord.add(i.next().getTrust());
+            length+=1;
+        }
+        Collections.sort(ord);
+        int left;
+        if(length%2==0){
+            left=length/2-1;
+        }
+        else left=length/2;
+        List<Integer> ordered=ord.subList(left,length);
+        i = group.iterator();
+        while(i.hasNext()){
+            Priest p=i.next();
+            if(ordered.contains(p.getTrust())){
+                quorum.add(p);
+                ordered.remove(new Integer(p.getTrust()));
+                length-=1;
             }
-            c++;
+            if(ordered.isEmpty()){
+                return quorum;
+            }
         }
         return quorum;
     }
@@ -135,21 +159,22 @@ public class Priest {
         }
         //the decree must be the youngest one between priests that already voted B3 condition
         //usa vote.ballot come ultimo voto per scegliere il decree
-        if(decree!=null){
-            if(lastTried.getVoting().isEmpty()){
-                lastTried.setDecree(decree);
-                lastTried.setYoungerBallot(parseInt(ballotVote));
-            }
-            else {
-                if(parseInt(ballotNumber)<lastTried.getYoungerBallot()){
+        if(!decree.equals("infinity")){
+            if (lastTried.getVoting().isEmpty()) {
+                    lastTried.setDecree(decree);
                     lastTried.setYoungerBallot(parseInt(ballotVote));
-                }
+                } else {
+                    if (parseInt(ballotNumber) < lastTried.getYoungerBallot()) {
+                        lastTried.setYoungerBallot(parseInt(ballotVote));
+                    }
             }
         }
         //add new priest to voting ones
-        for(Priest priest : this.group){
-            if (priest.address.equals(address) && priest.port == parseInt(port))
+        for(Priest priest : this.group) {
+            if (priest.address.equals(address) && priest.port == parseInt(port)) {
                 lastTried.addVoting(priest);
+                priest.addTrust();
+            }
         }
         //check if all quorum voted,if true send beginBallot
         LinkedList<Priest> l=lastTried.getVoting();
