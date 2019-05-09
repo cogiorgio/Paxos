@@ -59,13 +59,12 @@ public class Priest {
         int BallotNumber;
         if (lastTried==null){
             BallotNumber=0;
-        }else{
+        }else {
             BallotNumber = lastTried.getNumber() + 1;
         }
-        LinkedList<Priest> quorum = chooseQuorum();
-        Ballot b = new Ballot(decree,quorum,BallotNumber);
+        Ballot b = new Ballot(decree,new LinkedList<Priest>(),BallotNumber);
         this.lastTried=b;
-        Iterator<Priest> i = quorum.iterator();
+        Iterator<Priest> i = this.group.iterator();
         PrintWriter out;
         while(i.hasNext()){
             Priest p = i.next();
@@ -149,7 +148,7 @@ public class Priest {
             return;
         }
         //check if it already voted
-        Iterator b=lastTried.getVoting().iterator();
+        Iterator b=lastTried.getQuorum().iterator();
         Priest p;
         while(b.hasNext()){
             p=(Priest)b.next();
@@ -157,41 +156,34 @@ public class Priest {
                 return;
             }
         }
-        //the decree must be the youngest one between priests that already voted B3 condition
-        //usa vote.ballot come ultimo voto per scegliere il decree
-        if(!decree.equals("infinity")){
-            if (lastTried.getVoting().isEmpty()) {
-                    lastTried.setDecree(decree);
-                    lastTried.setYoungerBallot(parseInt(ballotVote));
-                } else {
-                    if (parseInt(ballotNumber) < lastTried.getYoungerBallot()) {
-                        lastTried.setYoungerBallot(parseInt(ballotVote));
-                    }
-            }
-        }
-        //add new priest to voting ones
         for(Priest priest : this.group) {
             if (priest.address.equals(address) && priest.port == parseInt(port)) {
-                lastTried.addVoting(priest);
+                lastTried.addQuorum(priest);
                 priest.addTrust();
             }
         }
-        //check if all quorum voted,if true send beginBallot
-        LinkedList<Priest> l=lastTried.getVoting();
-        b=lastTried.getQuorum().iterator();
-        while(b.hasNext()){
-            p=(Priest)b.next();
-            if(!l.contains(p)){
-                return;
+        //the decree must be the youngest one between priests that already voted B3 condition
+        //usa vote.ballot come ultimo voto per scegliere il decree
+        if(!decree.equals("infinity")){
+            if (lastTried.getQuorum().isEmpty()) {
+                    lastTried.setDecree(decree);
+                    lastTried.setYoungerBallot(parseInt(ballotVote));
+                } else {
+                    if (parseInt(ballotNumber) > lastTried.getYoungerBallot()) {
+                        lastTried.setYoungerBallot(parseInt(ballotVote));
+                    }
             }
-        }
 
+        }
+        if(lastTried.getQuorum().size()<this.group.size()/2+1){
+            return;
+        }
         //if it arrives here it means that we can send our beginBallot and end this step
         lastTried.setVoted(1);
         //this also empty group, why??
-        LinkedList<Priest> temp = (LinkedList<Priest>) this.group.clone();
-        lastTried.emptyVoting();
-        this.group = temp;
+        //LinkedList<Priest> temp = (LinkedList<Priest>) this.group.clone();
+        //lastTried.emptyVoting();
+        //this.group = temp;
         b=lastTried.getQuorum().iterator();
         PrintWriter out;
         while(b.hasNext()){

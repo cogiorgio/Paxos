@@ -16,6 +16,10 @@ public class Ballot {
         this.number=number;
     }
 
+    public synchronized void addQuorum(Priest p){
+        quorum.add(p);
+    }
+
     public synchronized void addVoting(Priest p){
         voting.add(p);
     }
