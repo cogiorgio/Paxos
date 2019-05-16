@@ -1,3 +1,6 @@
+import com.google.gson.Gson;
+import com.mongodb.*;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -56,12 +59,40 @@ public class Priest {
 
     //priest starts a ballot choosing its number,decree,quorum;
     public void startBallot(String decree){
-        int BallotNumber;
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        DB database = mongoClient.getDB("PriestDB");
+        database.createCollection("priests", null);
+        mongoClient.getDatabaseNames().forEach(System.out::println);
+        DBCollection collection = database.getCollection("priests");
+        String StringBallotNumber;
         if (lastTried==null){
-            BallotNumber=0;
+            StringBallotNumber = port + "0";
+            //saving lastTried number into DB
+            BasicDBObject document = new BasicDBObject();
+            document.put("id", ""+this.port);
+            document.put("lastTried", StringBallotNumber);
+            collection.insert(document);
         }else {
-            BallotNumber = lastTried.getNumber() + 1;
+            StringBallotNumber = ""+(lastTried.getNumber() + 1);
+            //updating lastTried number into DB
+            BasicDBObject query = new BasicDBObject();
+            query.put("id", ""+this.port);
+            BasicDBObject newDocument = new BasicDBObject();
+            newDocument.put("lastTried", StringBallotNumber);
+            BasicDBObject updateObject = new BasicDBObject();
+            updateObject.put("$set", newDocument);
+            collection.update(query, updateObject);
         }
+
+
+        BasicDBObject searchQuery = new BasicDBObject();
+        searchQuery.put("id", ""+this.port);
+        DBCursor cursor = collection.find(searchQuery);
+
+        while (cursor.hasNext()) {
+            System.out.println(cursor.next());
+        }
+        int BallotNumber = parseInt(StringBallotNumber);
         Ballot b = new Ballot(decree,new LinkedList<Priest>(),BallotNumber);
         this.lastTried=b;
         Iterator<Priest> i = this.group.iterator();
@@ -171,6 +202,7 @@ public class Priest {
                 } else {
                     if (parseInt(ballotNumber) > lastTried.getYoungerBallot()) {
                         lastTried.setYoungerBallot(parseInt(ballotVote));
+                        lastTried.setDecree(decree);
                     }
             }
 

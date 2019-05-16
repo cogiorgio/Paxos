@@ -7,6 +7,7 @@ public class StartPriest {
         LinkedList<Priest> group = new LinkedList();
         group.add(new Priest("localhost",4000));
         group.add(new Priest("localhost",4002));
+        group.add(new Priest("localhost",4003));
         p.setGroup(group);
         p.listen();
         String input="";
