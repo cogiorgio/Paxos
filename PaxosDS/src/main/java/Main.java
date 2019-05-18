@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Priest p = new Priest("localhost", 4000);
+        Priest p = new Priest("localhost", 4001,"b");
         LinkedList<Priest> group = new LinkedList();
-        group.add(new Priest("localhost",4001));
-        group.add(new Priest("localhost",4002));
-        group.add(new Priest("localhost",4003));
+        group.add(new Priest("localhost",4000,"a"));
+        group.add(new Priest("localhost",4002,"c"));
+        group.add(new Priest("localhost",4003,"d"));
         p.setGroup(group);
         p.listen();
         String input="";
