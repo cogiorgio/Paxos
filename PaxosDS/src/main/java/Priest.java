@@ -76,10 +76,10 @@ public class Priest {
         DBCollection collection = database.getCollection("LOG");
         String StringBallotNumber;
         BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("log",currentLog);
+        whereQuery.put("log",""+currentLog);
         DBCursor cursor=collection.find(whereQuery);
         //quì vedo se esiste già un log al currentLog
-        //NOTA questo fatto si verifica perche alcuni database potrebbero essere più avanti ed hanno già iniziato ballot a log successivi
+        //NOTA questo fatto si verifica perchè alcuni database potrebbero essere più avanti ed hanno già iniziato ballot a log successivi
         //la consistenza è garantita dall'algo
         DBObject dbo=null;
         if(cursor.hasNext()){
@@ -87,6 +87,7 @@ public class Priest {
             if(!(dbo.get("decree").toString()).equals("infinity")){
                 //se troviamo il log al current log che esiste ed ha decree già fissato, aumentiamo current log e invitiamo a riprovare
                 currentLog+=1;
+                //TODO: ritorna current decree in caso di richiesta al DB da un client
                 System.out.println("log già occupato,ritenta..");
                 return;
             }
@@ -97,7 +98,7 @@ public class Priest {
             //caso in cui non esiste
             StringBallotNumber =port+ "" +0;
             //saving lastTried number into DB
-            BasicDBObject document = new BasicDBObject();
+            /*BasicDBObject document = new BasicDBObject();
             document.put("id", ""+this.port);
             document.put("log",currentLog+"");
             document.put("lastTried", StringBallotNumber);
@@ -106,7 +107,8 @@ public class Priest {
             document.put("lastVotedBallot", "0");
             document.put("lastVotedDecree", "infinity");
             collection.insert(document);
-            System.out.println(document);
+            System.out.println(document);*/
+            insertDataBase(collection,""+this.port, ""+currentLog, StringBallotNumber, -1+"","infinity", "0", "infinity");
         }else if(lastTried==null && dbo!=null){
             //caso in cui esiste ma ancora non ho iniziato ballot
             //è stato inizializzato da altri database ed ha solo il campo nextBallot rilevante
@@ -115,25 +117,18 @@ public class Priest {
             //updating lastTried number into DB
             BasicDBObject query = new BasicDBObject();
             query.put("id", ""+this.port);
-            query.put("log",currentLog);
-            BasicDBObject newDocument = new BasicDBObject();
-            newDocument.put("lastTried", StringBallotNumber);
-            BasicDBObject updateObject = new BasicDBObject();
-            updateObject.put("$set", newDocument);
-            System.out.println(collection.update(query, updateObject));
+            query.put("log",""+currentLog);
+            updateDataBase(collection, StringBallotNumber, query, "lastTried");
         }
         else {
             //caso in cui abbiamo già iniziato il ballot,e aumentiamo solo il numero di ballot
-            StringBallotNumber =(lastTried.getNumber() +""+ 0);
+            //StringBallotNumber =(lastTried.getNumber() +""+ 0);
+            StringBallotNumber =""+(lastTried.getNumber()+1);
             //updating lastTried number into DB
             BasicDBObject query = new BasicDBObject();
             query.put("id", ""+this.port);
-            query.put("log",currentLog);
-            BasicDBObject newDocument = new BasicDBObject();
-            newDocument.put("lastTried",StringBallotNumber);
-            BasicDBObject updateObject = new BasicDBObject();
-            updateObject.put("$set", newDocument);
-            System.out.println(collection.update(query, updateObject));
+            query.put("log",""+currentLog);
+            updateDataBase(collection, StringBallotNumber, query, "lastTried");
         }
         //aggiorno last tried dopo aver aggiornato il db
         int BallotNumber = parseInt(StringBallotNumber);
@@ -155,8 +150,29 @@ public class Priest {
         }
     }
 
+    private void updateDataBase(DBCollection collection, String value, BasicDBObject query, String field) {
+        BasicDBObject newDocument = new BasicDBObject();
+        newDocument.put(field, value);
+        BasicDBObject updateObject = new BasicDBObject();
+        updateObject.put("$set", newDocument);
+        System.out.println(collection.update(query, updateObject));
+    }
+    private DBObject insertDataBase(DBCollection collection, String id, String log, String lastTried, String nextBallot, String decree, String lastVotedBallot, String lastVotedDecree){
+        BasicDBObject document = new BasicDBObject();
+        document.put("id", id);
+        document.put("log",log);
+        document.put("lastTried", lastTried);
+        document.put("nextBallot",nextBallot);
+        document.put("decree", decree);
+        document.put("lastVotedBallot", lastVotedBallot);
+        document.put("lastVotedDecree", lastVotedDecree);
+        collection.insert(document);
+        System.out.println(document);
+        return document;
+    }
+
     //decide the next ballot number (> lastTried) and send it
-    public void NextBallot(String log,String ballot_num, String pAddress, String pPort){
+    public synchronized void NextBallot(String log,String ballot_num, String pAddress, String pPort){
         //controllo se il log è uguale a quello corrente,in tal caso svolgo normalmente
         //il fatto che sia uguale a quello corrente e last tried != null,mi da
         //la certezza che ho già l'oggetto log con un ballot avviato
@@ -202,18 +218,19 @@ public class Priest {
                 } else {
                     //aggiorno il log
                     whereQuery.put("id", "" + this.port);
-                    BasicDBObject newDocument = new BasicDBObject();
+                    updateDataBase(collection, ballot_num, whereQuery, "nextBallot");
+                    /*BasicDBObject newDocument = new BasicDBObject();
                     newDocument.put("nextBallot", ballot_num);
                     BasicDBObject updateObject = new BasicDBObject();
                     updateObject.put("$set", newDocument);
-                    System.out.println(collection.update(whereQuery, updateObject));
+                    System.out.println(collection.update(whereQuery, updateObject));*/
                 }
             }
             //questo è il caso in cui non esiste,equivale al caso in cui posso accettare tutto
             //anche se il database in questione è ancora indietro con i log,quando arriverà a questo log andrà avanti
             //l'ordine è mantenuto dall'algo
             else{
-                    BasicDBObject document = new BasicDBObject();
+                    /*BasicDBObject document = new BasicDBObject();
                     document.put("id", ""+this.port);
                     document.put("log",log);
                     document.put("lastTried", "-1");
@@ -222,8 +239,8 @@ public class Priest {
                     document.put("lastVotedBallot", "0");
                     document.put("lastVotedDecree", "infinity");
                     collection.insert(document);
-                    System.out.println(document);
-                    dbo=document;
+                    System.out.println(document);*/
+                    dbo = insertDataBase(collection, ""+this.port, log, "-1", ballot_num, "infinity","0","infinity");
                 }
             PrintWriter out;
             try {
@@ -314,7 +331,7 @@ public class Priest {
         }
     }
 
-    public void BeginBallot(String log,String ballotNumber, String decree, String address, String port){
+    public synchronized void BeginBallot(String log,String ballotNumber, String decree, String address, String port){
         //qui ricevo il begin ballot,devo andare a prendere il log corrispondente ed eseguire l'algoritmo su quel log
         DB database = mongoClient.getDB(dbName);
         DBCollection collection = database.getCollection("LOG");
@@ -328,12 +345,14 @@ public class Priest {
         else{
             //aggiorno last voted
             whereQuery.put("id", "" + this.port);
-            BasicDBObject newDocument = new BasicDBObject();
+            updateDataBase(collection, ballotNumber, whereQuery, "lastVotedBallot");
+            updateDataBase(collection, decree, whereQuery, "lastVotedDecree");
+            /*BasicDBObject newDocument = new BasicDBObject();
             newDocument.put("lastVotedBallot",ballotNumber );
             newDocument.put("lastVotedDecree",decree );
             BasicDBObject updateObject = new BasicDBObject();
             updateObject.put("$set", newDocument);
-            System.out.println(collection.update(whereQuery, updateObject));
+            System.out.println(collection.update(whereQuery, updateObject));*/
             PrintWriter out;
             try {
                 Socket s = new Socket(address, parseInt(port));
@@ -347,7 +366,7 @@ public class Priest {
 
     }
     //sends the vote,condition : b = nextBallot
-    public void Voted(String log,String ballotNumber, String address, String port){
+    public synchronized void Voted(String log,String ballotNumber, String address, String port){
         if(Integer.parseInt(log)!=currentLog){
             return;
         }
@@ -393,11 +412,12 @@ public class Priest {
         DBCursor cursor=collection.find(whereQuery);
         DBObject dbo=cursor.next();
         whereQuery.put("id", "" + this.port);
-        BasicDBObject newDocument = new BasicDBObject();
+        updateDataBase(collection, lastTried.getDecree(), whereQuery, "decree");
+        /*BasicDBObject newDocument = new BasicDBObject();
         newDocument.put("decree",lastTried.getDecree());
         BasicDBObject updateObject = new BasicDBObject();
         updateObject.put("$set", newDocument);
-        System.out.println(collection.update(whereQuery, updateObject));
+        System.out.println(collection.update(whereQuery, updateObject));*/
         //if it arrives here it means that we can send our Success and end this step
         lastTried.setVoted(1);
         lastTried.emptyVoting();
@@ -420,7 +440,7 @@ public class Priest {
 
     }
     //sends a success message
-    public void Success(String log,String decree){
+    public synchronized void Success(String log,String decree){
         //ricevuto il messaggio success aggiorno il decree del log corrispondente
         System.out.println(decree);
         //commit to database
@@ -431,11 +451,12 @@ public class Priest {
         DBCursor cursor=collection.find(whereQuery);
         DBObject dbo=cursor.next();
         whereQuery.put("id", "" + this.port);
-        BasicDBObject newDocument = new BasicDBObject();
+        updateDataBase(collection, decree, whereQuery, "decree");
+        /*BasicDBObject newDocument = new BasicDBObject();
         newDocument.put("decree",decree);
         BasicDBObject updateObject = new BasicDBObject();
         updateObject.put("$set", newDocument);
-        System.out.println(collection.update(whereQuery, updateObject));
+        System.out.println(collection.update(whereQuery, updateObject));*/
     }
 
     public synchronized void stopListening(){
