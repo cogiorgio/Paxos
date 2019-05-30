@@ -13,7 +13,7 @@ public class StartPriest3 {
             String input="";
             String[] l;
             Scanner reader= new Scanner(System.in);
-            System.out.println("Commands:\n- commit [decree]\n- exit");
+            System.out.println("Commands:\n- commit [decree]\n- exit \n-show");
             while(input!="exit"){
                 System.out.print("Insert a command: ");
                 input=reader.nextLine();

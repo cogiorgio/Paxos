@@ -10,6 +10,9 @@ import java.util.*;
 import static java.lang.Integer.parseInt;
 
 public class Priest {
+
+    public static final String ANSI_RESET="\u001B[0m";
+    public static final String ANSI_GREEN="\u001B[34m";
     private LinkedList<Priest> group;
     public int port;
     private String address;
@@ -72,7 +75,6 @@ public class Priest {
         }
         DB database = mongoClient.getDB(dbName);
         database.createCollection("LOG", null);
-        mongoClient.getDatabaseNames().forEach(System.out::println);
         DBCollection collection = database.getCollection("LOG");
         String StringBallotNumber;
         BasicDBObject whereQuery = new BasicDBObject();
@@ -80,7 +82,7 @@ public class Priest {
         DBCursor cursor=collection.find(whereQuery);
         //quì vedo se esiste già un log al currentLog
         //NOTA questo fatto si verifica perchè alcuni database potrebbero essere più avanti ed hanno già iniziato ballot a log successivi
-        //la consistenza è garantita dall'algo
+        //la consistenza è garantita dall'algo;
         DBObject dbo=null;
         if(cursor.hasNext()){
             dbo=cursor.next();
@@ -88,7 +90,7 @@ public class Priest {
                 //se troviamo il log al current log che esiste ed ha decree già fissato, aumentiamo current log e invitiamo a riprovare
                 currentLog+=1;
                 //TODO: ritorna current decree in caso di richiesta al DB da un client
-                System.out.println("log già occupato,ritenta..");
+                System.out.println(ANSI_GREEN+"log già occupato,ritenta.."+ANSI_RESET);
                 return;
             }
         }
@@ -138,7 +140,7 @@ public class Priest {
         PrintWriter out;
         while(i.hasNext()){
             Priest p = i.next();
-            System.out.println("Priest " + p.address + ":" + p.port);
+            System.out.println(ANSI_GREEN+"1] NextBallot sent to Priest " + p.address + ":" + p.port+ANSI_RESET);
             try {
                 Socket s = new Socket(p.address, p.port);
                 out = new PrintWriter(s.getOutputStream(), true);
@@ -155,7 +157,7 @@ public class Priest {
         newDocument.put(field, value);
         BasicDBObject updateObject = new BasicDBObject();
         updateObject.put("$set", newDocument);
-        System.out.println(collection.update(query, updateObject));
+        collection.update(query, updateObject);
     }
     private DBObject insertDataBase(DBCollection collection, String id, String log, String lastTried, String nextBallot, String decree, String lastVotedBallot, String lastVotedDecree){
         BasicDBObject document = new BasicDBObject();
@@ -167,8 +169,22 @@ public class Priest {
         document.put("lastVotedBallot", lastVotedBallot);
         document.put("lastVotedDecree", lastVotedDecree);
         collection.insert(document);
-        System.out.println(document);
         return document;
+    }
+
+    public LinkedList<String> show(){
+        DB database = mongoClient.getDB(dbName);
+        DBCollection collection = database.getCollection("LOG");
+        LinkedList<String> ballots=new LinkedList<>();
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("id",""+this.port);
+        DBCursor cursor=collection.find(whereQuery);
+        while(cursor.hasNext()){
+            DBObject o=cursor.next();
+            ballots.add("Log:"+o.get("log")+ " | Decree:"+o.get("decree"));
+
+        }
+        return ballots;
     }
 
     //decide the next ballot number (> lastTried) and send it
@@ -185,9 +201,8 @@ public class Priest {
                 this.nextBal = (parseInt(ballot_num));
                 PrintWriter out;
                 try {
-                    System.out.println("I'm " + this.port + "connecting to " + pPort);
+                    System.out.println(ANSI_GREEN+"2] LastVote sent to " + pPort+ ANSI_RESET);
                     Socket s = new Socket(pAddress, parseInt(pPort));
-                    System.out.println("connected to " + pAddress + ":" + pPort);
                     out = new PrintWriter(s.getOutputStream(), true);
                     out.println("LastVote/" +log+"/"+ ballot_num + "/" + this.prevVote.getDecree() + "/" + this.prevVote.getBallotNumber() +
                             "/" + this.address + "/" + this.port);
@@ -206,12 +221,10 @@ public class Priest {
             DBCursor cursor=collection.find(whereQuery);
             DBObject dbo=null;
             //caso log precedente,do le informazioni richieste per poter aggiornare gli altri
-            System.out.println(cursor);
             //se trova has next significa che è un log passato e dobbiamo solo aggiornare next bal
             //questa operazione serve ad aggiornare gli altri database e basta
             if(cursor.hasNext()) {
                 dbo = cursor.next();
-                System.out.println(dbo);
                 if (parseInt(ballot_num) <= parseInt(dbo.get("nextBallot").toString())) {
                     //message ignored
                     return;
@@ -244,9 +257,8 @@ public class Priest {
                 }
             PrintWriter out;
             try {
-                System.out.println("I'm " + this.port + "connecting to " + pPort);
+                System.out.println(ANSI_GREEN+"2] LastVote sent to " + pPort+ANSI_RESET);
                 Socket s = new Socket(pAddress, parseInt(pPort));
-                System.out.println("connected to " + pAddress + ":" + pPort);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("LastVote/"+log+"/" + ballot_num + "/" + dbo.get("lastVotedDecree").toString() + "/" + dbo.get("lastVotedBallot").toString() +
                         "/" + this.address + "/" + this.port);
@@ -320,6 +332,8 @@ public class Priest {
         while(b.hasNext()){
             p=(Priest)b.next();
             try {
+
+                System.out.println(ANSI_GREEN+"2] BeginBallot sent to " + p.port+ANSI_RESET);
                 Socket s = new Socket(p.address, p.port);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("BeginBallot/" +log+"/"+ lastTried.getNumber() + "/" + lastTried.getDecree() + "/" + this.address
@@ -355,6 +369,7 @@ public class Priest {
             System.out.println(collection.update(whereQuery, updateObject));*/
             PrintWriter out;
             try {
+                System.out.println(ANSI_GREEN+"4] Voted sent to " + port+ANSI_RESET);
                 Socket s = new Socket(address, parseInt(port));
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("Voted/" +log+"/"+ ballotNumber + "/" + this.address + "/" + this.port);
@@ -374,8 +389,6 @@ public class Priest {
         if(parseInt(ballotNumber)!=lastTried.getNumber()){
             return;
         }
-        System.out.println("NOT OLD BALLOT");
-
         //check if it already voted
         Iterator b=lastTried.getVoting().iterator();
         Priest p;
@@ -385,8 +398,6 @@ public class Priest {
                 return;
             }
         }
-        System.out.println("NOT ALREADY VOTED");
-
         //add new priest to voting ones
         //group cosa sarebbe? se metto lastTried.voting = a this.group è giusto?
         for(Priest priest : this.group){
@@ -404,7 +415,7 @@ public class Priest {
             }
         }
         //se ho raggiunto il quorum mando un messaggio di success ed aggiorno il database
-        System.out.println("ALL VOTED");
+        System.out.println(ANSI_GREEN+"5] ALL VOTED"+ANSI_RESET);
         DB database = mongoClient.getDB(dbName);
         DBCollection collection = database.getCollection("LOG");
         BasicDBObject whereQuery = new BasicDBObject();
@@ -426,6 +437,7 @@ public class Priest {
         while(b.hasNext()){
             p=(Priest)b.next();
             try {
+                System.out.println(ANSI_GREEN+"5] Success sent to " + p.port+ANSI_RESET);
                 Socket s = new Socket(p.address, p.port);
                 out = new PrintWriter(s.getOutputStream(), true);
                 out.println("Success/" +log+"/"+ lastTried.getDecree() + "/" + this.address + "/" + this.port);
@@ -442,7 +454,6 @@ public class Priest {
     //sends a success message
     public synchronized void Success(String log,String decree){
         //ricevuto il messaggio success aggiorno il decree del log corrispondente
-        System.out.println(decree);
         //commit to database
         DB database = mongoClient.getDB(dbName);
         DBCollection collection = database.getCollection("LOG");
