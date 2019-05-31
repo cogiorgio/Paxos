@@ -50,6 +50,9 @@ public class Priest {
     public void setGroup(LinkedList<Priest> group) {
         this.group = group;
     }
+    public LinkedList<Priest>  getGroup(){return this.group;}
+    public String getAddress(){return this.address;}
+    public int getPort(){return this.port;}
 
     public synchronized Vote getPrev_vote() {
         return prevVote;

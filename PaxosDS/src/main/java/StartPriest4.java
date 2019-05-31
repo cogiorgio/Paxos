@@ -1,13 +1,13 @@
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class StartPriest {
+public class StartPriest4 {
     public static void main(String[] args) {
-        Priest p = new Priest("localhost", 4000,"a");
+        Priest p = new Priest("localhost", 4003,"d");
         LinkedList<Priest> group = new LinkedList();
+        group.add(new Priest("localhost",4000,"a"));
         group.add(new Priest("localhost",4001,"b"));
         group.add(new Priest("localhost",4002,"c"));
-        group.add(new Priest("localhost",4003,"d"));
         p.setGroup(group);
         p.listen();
         while(true);
@@ -42,3 +42,4 @@ public class StartPriest {
         }*/
     }
 }
+

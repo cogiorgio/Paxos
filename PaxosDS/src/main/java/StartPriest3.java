@@ -3,14 +3,15 @@ import java.util.Scanner;
 
 public class StartPriest3 {
         public static void main(String[] args) {
-            Priest p = new Priest("localhost", 4000,"a");
+            Priest p = new Priest("localhost", 4002,"c");
             LinkedList<Priest> group = new LinkedList();
+            group.add(new Priest("localhost",4000,"a"));
             group.add(new Priest("localhost",4001,"b"));
-            group.add(new Priest("localhost",4002,"c"));
             group.add(new Priest("localhost",4003,"d"));
             p.setGroup(group);
             p.listen();
-            String input="";
+            while(true);
+            /*String input="";
             String[] l;
             Scanner reader= new Scanner(System.in);
             System.out.println("Commands:\n- commit [decree]\n- exit \n-show");
@@ -38,6 +39,6 @@ public class StartPriest3 {
                         System.out.println("command doesn't exists.]");
                     }
                 }
-            }
+            }*/
         }
     }

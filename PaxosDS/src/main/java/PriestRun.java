@@ -20,6 +20,9 @@ public class PriestRun implements Runnable {
             in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
             String s=in.readLine();
             String[] l=s.split("/");
+            if(l[0].equals("StartBallot")){
+                pr.startBallot(l[1]);
+            }
             if(l[0].equals("NextBallot")){
                 pr.NextBallot(l[1],l[2],l[3],l[4]);
             }
@@ -34,6 +37,10 @@ public class PriestRun implements Runnable {
             }
             if(l[0].equals("Success")){
                 pr.Success(l[1],l[2]);
+            }
+            if(l[0].equals("Show")){
+                LinkedList<String> res = pr.show();
+                out.println(res.toString());
             }
         }catch(Exception e){
             e.printStackTrace();
