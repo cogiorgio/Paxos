@@ -21,6 +21,7 @@ public class PriestRun implements Runnable {
             String s=in.readLine();
             String[] l=s.split("/");
             if(l[0].equals("StartBallot")){
+                System.out.println("Received " + l);
                 pr.startBallot(l[1]);
             }
             if(l[0].equals("NextBallot")){

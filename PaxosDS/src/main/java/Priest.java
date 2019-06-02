@@ -70,6 +70,7 @@ public class Priest {
 
     //priest starts a ballot choosing its number,decree,quorum;
     public synchronized void startBallot(String decree){
+        System.out.println("Starting Ballot");
         //ALLORA,all'inizio metto currentLog a -1 così posso distinguere
         //i database che non hanno mai fatto ballots
         //dobbiamo modificare queste modifiche e mettere un metodo synch per la modifica di current

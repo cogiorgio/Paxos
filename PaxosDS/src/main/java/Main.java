@@ -32,6 +32,7 @@ public class Main {
                 l=input.split(" ");
                 if(l.length==1){
                     if(l[0].equals("show")){
+                        System.out.println("received show");
                         String res = p.show();
                         System.out.println("RESSSS" + res);
                         out.println(res);
@@ -43,6 +44,7 @@ public class Main {
                 }
                 else if(l.length>1){
                     if(l[0].equals("commit")) {
+                        System.out.println(input.substring(7));
                         p.startBallot(input.substring(7));
                     }
                     else{

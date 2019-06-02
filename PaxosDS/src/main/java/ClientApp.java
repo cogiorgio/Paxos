@@ -25,7 +25,7 @@ public class ClientApp {
             String input="";
             String[] l;
             Scanner reader= new Scanner(System.in);
-            System.out.println("Commands111:\n- createPriest [port] [name]\n -show\n- commit [decree]\n- exit");
+            System.out.println("Commands:\n -show\n- commit [decree]\n- exit");
             while(input!="exit") {
                 sleep(1000);
                 System.out.print("Insert a command: ");
@@ -36,6 +36,7 @@ public class ClientApp {
                         System.out.println("Goodbye.");
                         return;
                     } else if (l[0].equals("show")) {
+                        System.out.println("I'm sending show");
                         outStream.println("show");
                         //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String res =inStream.readLine();
@@ -45,6 +46,7 @@ public class ClientApp {
                     }
                 } else if (l.length > 1) {
                     if (l[0].equals("commit")) {
+                        System.out.println("I'm sending commit");
                         outStream.println(input);
                     } else {
                         System.out.println("command doesn't exist.");
