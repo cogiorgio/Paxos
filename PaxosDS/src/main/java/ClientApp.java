@@ -27,6 +27,7 @@ public class ClientApp {
             Scanner reader= new Scanner(System.in);
             System.out.println("Commands:\n -show\n- commit [decree]\n- exit");
             while(input!="exit") {
+                System.out.println("Sono in attesa di comandi");
                 sleep(1000);
                 System.out.print("Insert a command: ");
                 input = reader.nextLine();

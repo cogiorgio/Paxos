@@ -20,16 +20,19 @@ public class Main {
             //TODO: togli while true
             while(true){
                 Socket s = serverSocket.accept();
-                BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                Thread t = new Thread(new ServerAcceptor(s, p));
+                t.start();
+                /*BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                 PrintWriter out = new PrintWriter(s.getOutputStream(),true);
                 String input="";
                 String[] l;
-                Scanner reader= new Scanner(in);
+                //Scanner reader= new Scanner(in);
                 //out.println("Commands:\n- createPriest [port] [name]\n -show\n- commit [decree]\n- exit");
                 sleep(1000);
                 //out.print("Insert a command: ");
-                input=reader.nextLine();
+                input=in.readLine();
                 l=input.split(" ");
+                System.out.println("ho letto " + input + " e " + l);
                 if(l.length==1){
                     if(l[0].equals("show")){
                         System.out.println("received show");
@@ -50,7 +53,7 @@ public class Main {
                     else{
                         out.println("command doesn't exist.");
                     }
-                }
+                }*/
 
             }
         } catch (IOException e) {
