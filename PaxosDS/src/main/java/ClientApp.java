@@ -19,13 +19,13 @@ public class ClientApp {
     public static void main(String[] args) throws InterruptedException {
 
         try {
-            Socket s = new Socket("192.168.43.24", 3999);
+            Socket s = new Socket("localhost", 3999);
             PrintWriter outStream = new PrintWriter(s.getOutputStream(), true);
             BufferedReader inStream = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String input="";
             String[] l;
             Scanner reader= new Scanner(System.in);
-            System.out.println("Commands:\n -show\n- commit [decree]\n- exit");
+            System.out.println("Commands:\n -show\n- commit [decree]\n- query [log]\n- exit");
             while(input!="exit") {
                 System.out.println("Sono in attesa di comandi");
                 sleep(1000);
@@ -55,6 +55,11 @@ public class ClientApp {
                     if (l[0].equals("commit")) {
                         System.out.println("I'm sending commit");
                         outStream.println(input);
+                    }else if (l[0].equals("query")) {
+                        System.out.println("I'm sending query for log " + l[1]);
+                        outStream.println(input);
+                        String res =inStream.readLine();
+                        System.out.println("Query: " + res);
                     } else {
                         System.out.println("command doesn't exist.");
                     }

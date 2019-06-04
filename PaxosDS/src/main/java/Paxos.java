@@ -32,7 +32,7 @@ public class Paxos {
         //president.setGroup(group);
     }
 
-    public void startBallot(String decree) throws IOException {
+    public void startBallot(String decree,String queryLog) throws IOException {
         if (presidentIp==null){
             System.out.println("Inizializzare un database...");
         }
@@ -40,7 +40,7 @@ public class Paxos {
             System.out.println("sending startBallot to " + presidentIp + ":" + presidentPort);
             Socket s = new Socket(presidentIp, presidentPort);
             PrintWriter out = new PrintWriter(s.getOutputStream(),true);
-            out.println("StartBallot/" + decree);
+            out.println("StartBallot/" + decree+"/"+queryLog);
             //System.out.println("Ballot started...");
             //president.startBallot(decree);
         }
@@ -59,6 +59,22 @@ public class Paxos {
             BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String input =in.readLine();
             System.out.println("SHOW PAXOS: " + input);
+            return input;
+        }
+    }
+    public String queryLog(String queryLog) throws IOException {
+        if (presidentIp==null){
+            System.out.println("Inizializzare un database...");
+            return null;
+        }
+        else {
+            Socket s = new Socket(presidentIp, presidentPort);
+            PrintWriter out = new PrintWriter(s.getOutputStream(),true);
+            System.out.println("sending query for " + queryLog + " to " + presidentIp + ":" + presidentPort);
+            out.println("Query/"+queryLog);
+            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String input =in.readLine();
+            System.out.println("Query: " + input);
             return input;
         }
     }

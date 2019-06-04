@@ -52,7 +52,13 @@ public class ServerAcceptor implements Runnable {
                 } else if (l.length > 1) {
                     if (l[0].equals("commit")) {
                         System.out.println(input.substring(7));
-                        p.startBallot(input.substring(7));
+                        p.startBallot(input.substring(7),"-1");
+                    }
+                    else if (l[0].equals("query")) {
+                        System.out.println(l[0]);
+                        String res = p.queryLog(l[1]);
+                        System.out.println("Query: " + res);
+                        out.println(res);
                     } else {
                         out.println("command doesn't exist.");
                     }
