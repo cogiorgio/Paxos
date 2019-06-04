@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
 
@@ -38,8 +39,14 @@ public class ServerAcceptor implements Runnable {
                         String res = p.show();
                         System.out.println("RESSSS" + res);
                         out.println(res);
-
-                    } else {
+                    }
+                    else if(l[0].equals("showAll")) {
+                        System.out.println("received showAll");
+                        ArrayList<String> res =  p.showAll();
+                        System.out.println("RESSSS" + res.toString());
+                        out.println(res.toString());
+                    }
+                    else {
                         out.println("command doesn't exist.");
                     }
                 } else if (l.length > 1) {

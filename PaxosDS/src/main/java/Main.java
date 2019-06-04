@@ -13,7 +13,10 @@ public class Main {
         for(int i = 0; i < 4; i++){
             int port = 4000+i;
             String namedb = "p" + i;
-            p.addPriest("localhost", port, namedb);
+            if(i == 2 || i == 3)
+                p.addPriest("192.168.43.13", port, namedb);
+            else
+                p.addPriest("192.168.43.24", port, namedb);
         }
         try {
             ServerSocket serverSocket = new ServerSocket(3999);

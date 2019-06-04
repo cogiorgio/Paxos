@@ -19,7 +19,7 @@ public class ClientApp {
     public static void main(String[] args) throws InterruptedException {
 
         try {
-            Socket s = new Socket("localhost", 3999);
+            Socket s = new Socket("192.168.43.24", 3999);
             PrintWriter outStream = new PrintWriter(s.getOutputStream(), true);
             BufferedReader inStream = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String input="";
@@ -39,6 +39,12 @@ public class ClientApp {
                     } else if (l[0].equals("show")) {
                         System.out.println("I'm sending show");
                         outStream.println("show");
+                        //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                        String res =inStream.readLine();
+                        System.out.println("DB: " + res);
+                    }else if (l[0].equals("showAll")) {
+                        System.out.println("I'm sending showAll");
+                        outStream.println("showAll");
                         //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
