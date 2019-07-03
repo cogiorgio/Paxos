@@ -9,6 +9,7 @@ public class StartPriest2 {
         group.add(new Priest("localhost",4002,"c"));
         group.add(new Priest("localhost",4003,"d"));
         p.setGroup(group);
+        p.connect();
         p.listen();
         while(true);
         /*String input="";

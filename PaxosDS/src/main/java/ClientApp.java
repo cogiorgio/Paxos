@@ -19,7 +19,7 @@ public class ClientApp {
     public static void main(String[] args) throws InterruptedException {
 
         try {
-            Socket s = new Socket("localhost", 3999);
+            Socket s = new Socket("172.20.10.5", 3999);
             PrintWriter outStream = new PrintWriter(s.getOutputStream(), true);
             BufferedReader inStream = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String input="";
@@ -42,7 +42,13 @@ public class ClientApp {
                         //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
-                    } else {
+                    }else if (l[0].equals("restart")) {
+                        System.out.println("I'm sending restart");
+                        outStream.println("restart");
+                        //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                        String res =inStream.readLine();
+                        System.out.println("DB: " + res);
+                    }  else {
                         System.out.println("command doesn't exist.");
                     }
                 } else if (l.length > 1) {

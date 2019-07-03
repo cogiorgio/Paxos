@@ -36,7 +36,6 @@ public class Priest {
         prevVote = new Vote(0,"infinity");
         this.dbName=dbName;
         currentLog=-1;
-        mongoClient = new MongoClient("localhost", 27017);
     }
 
     public synchronized int getTrust() {
@@ -66,6 +65,41 @@ public class Priest {
         this.listening = 1;
         Thread t=new Thread(new PriestRunnable(this));
         t.start();
+    }
+
+    public void connect(){
+        mongoClient = new MongoClient("localhost", 27017);
+    }
+
+    public String restart(){
+        if(currentLog==-1){
+            currentLog=0;
+        }
+        DB database = mongoClient.getDB(dbName);
+        database.createCollection("LOG", null);
+        DBCollection collection = database.getCollection("LOG");
+        String StringBallotNumber;
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("log",""+currentLog);
+        DBCursor cursor=collection.find(whereQuery);
+        //quì vedo se esiste già un log al currentLog
+        //NOTA questo fatto si verifica perchè alcuni database potrebbero essere più avanti ed hanno già iniziato ballot a log successivi
+        //la consistenza è garantita dall'algo;
+        DBObject dbo=null;
+        if(cursor.hasNext()){
+            dbo=cursor.next();
+            if(!(dbo.get("decree").toString()).equals("infinity")){
+                //se troviamo il log al current log che esiste ed ha decree già fissato, aumentiamo current log e invitiamo a riprovare
+                currentLog+=1;
+            }
+        }
+        if(dbo!=null) {
+            lastTried = new Ballot("", new LinkedList<Priest>(), parseInt(dbo.get("lastTried").toString()));
+            nextBal = parseInt(dbo.get("nextBallot").toString());
+            this.prevVote.setDecree(dbo.get("lastVotedDecree").toString());
+            this.prevVote.setDecree(dbo.get("lastVotedBallot").toString());
+        }
+        return "done";
     }
 
     //priest starts a ballot choosing its number,decree,quorum;
@@ -177,6 +211,7 @@ public class Priest {
     }
 
     public LinkedList<String> show(){
+        System.out.println("ok");
         DB database = mongoClient.getDB(dbName);
         DBCollection collection = database.getCollection("LOG");
         LinkedList<String> ballots=new LinkedList<>();
@@ -186,6 +221,7 @@ public class Priest {
         while(cursor.hasNext()){
             DBObject o=cursor.next();
             ballots.add("Log:"+o.get("log")+ " | Decree:"+o.get("decree"));
+            System.out.println("ok");
 
         }
         return ballots;

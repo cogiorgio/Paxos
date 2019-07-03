@@ -43,6 +43,11 @@ public class PriestRun implements Runnable {
                 LinkedList<String> res = pr.show();
                 out.println(res.toString());
             }
+            if(l[0].equals("Show")){
+                out.println(pr.restart());
+            }
+            //todo sock close
+
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -3,12 +3,13 @@ import java.util.Scanner;
 
 public class StartPriest4 {
     public static void main(String[] args) {
-        Priest p = new Priest("localhost", 4003,"d");
+        Priest p = new Priest("172.20.10.10", 4003,"d");
         LinkedList<Priest> group = new LinkedList();
-        group.add(new Priest("localhost",4000,"a"));
-        group.add(new Priest("localhost",4001,"b"));
-        group.add(new Priest("localhost",4002,"c"));
+        group.add(new Priest("172.20.10.5",4000,"a"));
+        group.add(new Priest("172.20.10.5",4001,"b"));
+        group.add(new Priest("172.20.10.10",4002,"c"));
         p.setGroup(group);
+        p.connect();
         p.listen();
         while(true);
         /*String input="";

@@ -39,6 +39,12 @@ public class ServerAcceptor implements Runnable {
                         System.out.println("RESSSS" + res);
                         out.println(res);
 
+                    }if (l[0].equals("restart")) {
+                        System.out.println("received restart");
+                        String res = p.show();
+                        System.out.println("RESSSS" + res);
+                        out.println(res);
+
                     } else {
                         out.println("command doesn't exist.");
                     }

@@ -59,6 +59,26 @@ public class Paxos {
             BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String input =in.readLine();
             System.out.println("SHOW PAXOS: " + input);
+            s.close();
+            return input;
+        }
+    }
+
+    public String reset() throws IOException {
+        if (presidentIp==null){
+            System.out.println("Inizializzare un database...");
+            return null;
+        }
+        else {
+            //TODO: SPAWNA THREAD
+            Socket s = new Socket(presidentIp, presidentPort);
+            PrintWriter out = new PrintWriter(s.getOutputStream(),true);
+            System.out.println("sending restart  to " + presidentIp + ":" + presidentPort);
+            out.println("Restart");
+            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String input =in.readLine();
+            System.out.println("RRESTART PAXOS: " + input);
+            s.close();
             return input;
         }
     }
