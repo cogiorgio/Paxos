@@ -274,10 +274,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.StartPriest3" />
       <item itemvalue="Application.ClientApp" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.StartPriest2" />
-      <item itemvalue="Application.StartPriest3" />
       <item itemvalue="Application.StartPriest4" />
       <item itemvalue="Application.StartPriest" />
     </list>
