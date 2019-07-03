@@ -16,15 +16,18 @@ public class PriestRun implements Runnable {
     }
     public void run(){
         try {
+            System.out.println("waiting for msg");
             out = new PrintWriter(sock.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
             String s=in.readLine();
             String[] l=s.split("/");
+            System.out.println("ho letto " + s);
             if(l[0].equals("StartBallot")){
                 System.out.println("Received " + l);
                 pr.startBallot(l[1]);
             }
             if(l[0].equals("NextBallot")){
+                System.out.println("Nextballot");
                 pr.NextBallot(l[1],l[2],l[3],l[4]);
             }
             if(l[0].equals("LastVote")){
@@ -43,11 +46,18 @@ public class PriestRun implements Runnable {
                 LinkedList<String> res = pr.show();
                 out.println(res.toString());
             }
+<<<<<<< HEAD
             if(l[0].equals("Show")){
                 out.println(pr.restart());
             }
             //todo sock close
 
+=======
+            if(l[0].equals("Query")){
+                String res = pr.queryLog(l[1]);
+                out.println(res);
+            }
+>>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
         }catch(Exception e){
             e.printStackTrace();
         }

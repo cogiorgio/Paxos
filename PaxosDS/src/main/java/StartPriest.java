@@ -1,13 +1,29 @@
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class StartPriest {
     public static void main(String[] args) {
-        Priest p = new Priest("localhost", 4000,"a");
+        String ip = args[0];
+        int port = Integer.parseInt(args[1]);
+        String dbName = args[2];
+        Priest p = new Priest("ip", port,dbName);
         LinkedList<Priest> group = new LinkedList();
-        group.add(new Priest("localhost",4001,"b"));
-        group.add(new Priest("localhost",4002,"c"));
-        group.add(new Priest("localhost",4003,"d"));
+        try (BufferedReader br = new BufferedReader(new FileReader("group.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if(! (ip.equals(values[0])) && !(port == Integer.parseInt(values[1])))
+                    group.add(new Priest(values[0],Integer.parseInt(values[1]),values[2]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*LinkedList<Priest> group = new LinkedList();
+        group.add(new Priest("192.168.43.24",4001,"b"));
+        group.add(new Priest("192.168.43.13",4002,"c"));
+        group.add(new Priest("192.168.43.13",4003,"d"));*/
         p.setGroup(group);
         p.connect();
         p.listen();

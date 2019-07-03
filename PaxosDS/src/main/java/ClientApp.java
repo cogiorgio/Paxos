@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Thread.sleep;
+import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class ClientApp {
 
@@ -25,7 +26,7 @@ public class ClientApp {
             String input="";
             String[] l;
             Scanner reader= new Scanner(System.in);
-            System.out.println("Commands:\n -show\n- commit [decree]\n- exit");
+            System.out.println("Commands:\n -show\n- commit [decree]\n- query [log]\n- exit");
             while(input!="exit") {
                 System.out.println("Sono in attesa di comandi");
                 sleep(1000);
@@ -42,6 +43,7 @@ public class ClientApp {
                         //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
+<<<<<<< HEAD
                     }else if (l[0].equals("restart")) {
                         System.out.println("I'm sending restart");
                         outStream.println("restart");
@@ -49,12 +51,26 @@ public class ClientApp {
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
                     }  else {
+=======
+                    }else if (l[0].equals("showAll")) {
+                        System.out.println("I'm sending showAll");
+                        outStream.println("showAll");
+                        //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                        String res =inStream.readLine();
+                        System.out.println("DB: " + res);
+                    } else {
+>>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
                         System.out.println("command doesn't exist.");
                     }
                 } else if (l.length > 1) {
                     if (l[0].equals("commit")) {
                         System.out.println("I'm sending commit");
                         outStream.println(input);
+                    }else if (l[0].equals("query")) {
+                        System.out.println("I'm sending query for log " + l[1]);
+                        outStream.println(input);
+                        String res =inStream.readLine();
+                        System.out.println("Query: " + res);
                     } else {
                         System.out.println("command doesn't exist.");
                     }

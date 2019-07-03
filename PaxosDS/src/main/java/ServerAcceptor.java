@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
 
@@ -38,6 +39,7 @@ public class ServerAcceptor implements Runnable {
                         String res = p.show();
                         System.out.println("RESSSS" + res);
                         out.println(res);
+<<<<<<< HEAD
 
                     }if (l[0].equals("restart")) {
                         System.out.println("received restart");
@@ -46,12 +48,28 @@ public class ServerAcceptor implements Runnable {
                         out.println(res);
 
                     } else {
+=======
+                    }
+                    else if(l[0].equals("showAll")) {
+                        System.out.println("received showAll");
+                        ArrayList<String> res =  p.showAll();
+                        System.out.println("RESSSS" + res.toString());
+                        out.println(res.toString());
+                    }
+                    else {
+>>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
                         out.println("command doesn't exist.");
                     }
                 } else if (l.length > 1) {
                     if (l[0].equals("commit")) {
                         System.out.println(input.substring(7));
-                        p.startBallot(input.substring(7));
+                        p.startBallot(input.substring(7),"-1");
+                    }
+                    else if (l[0].equals("query")) {
+                        System.out.println(l[0]);
+                        String res = p.queryLog(l[1]);
+                        System.out.println("Query: " + res);
+                        out.println(res);
                     } else {
                         out.println("command doesn't exist.");
                     }

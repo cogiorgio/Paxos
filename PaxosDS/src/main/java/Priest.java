@@ -267,6 +267,7 @@ public class Priest {
                 dbo = cursor.next();
                 if (parseInt(ballot_num) <= parseInt(dbo.get("nextBallot").toString())) {
                     //message ignored
+                    System.out.println("Old Ballot, ignoring msg");
                     return;
                 } else {
                     //aggiorno il log
@@ -512,5 +513,19 @@ public class Priest {
 
     public synchronized void stopListening(){
         listening=0;
+    }
+
+    public String queryLog(String qLog) {
+        DB database = mongoClient.getDB(dbName);
+        DBCollection collection = database.getCollection("LOG");
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("log",qLog);
+        DBCursor cursor=collection.find(whereQuery);
+        String res = null;
+        while(cursor.hasNext()){
+            DBObject o=cursor.next();
+            res = o.get("decree").toString();
+        }
+        return res;
     }
 }
