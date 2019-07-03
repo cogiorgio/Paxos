@@ -46,18 +46,16 @@ public class PriestRun implements Runnable {
                 LinkedList<String> res = pr.show();
                 out.println(res.toString());
             }
-<<<<<<< HEAD
+
             if(l[0].equals("Show")){
                 out.println(pr.restart());
             }
             //todo sock close
 
-=======
             if(l[0].equals("Query")){
                 String res = pr.queryLog(l[1]);
                 out.println(res);
             }
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
         }catch(Exception e){
             e.printStackTrace();
         }

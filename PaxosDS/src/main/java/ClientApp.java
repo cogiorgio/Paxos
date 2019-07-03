@@ -43,15 +43,12 @@ public class ClientApp {
                         //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
-<<<<<<< HEAD
-                    }else if (l[0].equals("restart")) {
+                       }else if (l[0].equals("restart")) {
                         System.out.println("I'm sending restart");
                         outStream.println("restart");
                         //BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
-                    }  else {
-=======
                     }else if (l[0].equals("showAll")) {
                         System.out.println("I'm sending showAll");
                         outStream.println("showAll");
@@ -59,7 +56,6 @@ public class ClientApp {
                         String res =inStream.readLine();
                         System.out.println("DB: " + res);
                     } else {
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
                         System.out.println("command doesn't exist.");
                     }
                 } else if (l.length > 1) {

@@ -39,7 +39,6 @@ public class ServerAcceptor implements Runnable {
                         String res = p.show();
                         System.out.println("RESSSS" + res);
                         out.println(res);
-<<<<<<< HEAD
 
                     }if (l[0].equals("restart")) {
                         System.out.println("received restart");
@@ -47,8 +46,6 @@ public class ServerAcceptor implements Runnable {
                         System.out.println("RESSSS" + res);
                         out.println(res);
 
-                    } else {
-=======
                     }
                     else if(l[0].equals("showAll")) {
                         System.out.println("received showAll");
@@ -57,7 +54,6 @@ public class ServerAcceptor implements Runnable {
                         out.println(res.toString());
                     }
                     else {
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
                         out.println("command doesn't exist.");
                     }
                 } else if (l.length > 1) {
