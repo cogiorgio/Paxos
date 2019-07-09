@@ -80,26 +80,32 @@ public class Priest {
         DBCollection collection = database.getCollection("LOG");
         String StringBallotNumber;
         BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("log",""+currentLog);
+        whereQuery.put("id",""+this.port);
         DBCursor cursor=collection.find(whereQuery);
         //quì vedo se esiste già un log al currentLog
         //NOTA questo fatto si verifica perchè alcuni database potrebbero essere più avanti ed hanno già iniziato ballot a log successivi
         //la consistenza è garantita dall'algo;
         DBObject dbo=null;
-        if(cursor.hasNext()){
+
+        while(cursor.hasNext()){
             dbo=cursor.next();
-            if(!(dbo.get("decree").toString()).equals("infinity")){
+            currentLog+=1;
+            if((dbo.get("decree").toString()).equals("infinity")) {
                 //se troviamo il log al current log che esiste ed ha decree già fissato, aumentiamo current log e invitiamo a riprovare
-                currentLog+=1;
+
+
+                return "done";
             }
         }
+        currentLog+=1;
+        /* caso più ottimizzato,nel caso il db è spento e si riaccende
         if(dbo!=null) {
             lastTried = new Ballot("", new LinkedList<Priest>(), parseInt(dbo.get("lastTried").toString()));
             nextBal = parseInt(dbo.get("nextBallot").toString());
             this.prevVote.setDecree(dbo.get("lastVotedDecree").toString());
             this.prevVote.setDecree(dbo.get("lastVotedBallot").toString());
-        }
-        return "done";
+        }*/
+        return ""+currentLog;
     }
 
     //priest starts a ballot choosing its number,decree,quorum;
@@ -163,7 +169,8 @@ public class Priest {
         else {
             //caso in cui abbiamo già iniziato il ballot,e aumentiamo solo il numero di ballot
             //StringBallotNumber =(lastTried.getNumber() +""+ 0);
-            StringBallotNumber =""+(lastTried.getNumber()+1);
+            //TODO abbiamo un problema qui,cresce troppo lentamente 40000,40001.. se ha committato 40010 10 tentativi
+            StringBallotNumber =""+(lastTried.getNumber()+1);//prob
             //updating lastTried number into DB
             BasicDBObject query = new BasicDBObject();
             query.put("id", ""+this.port);
@@ -461,8 +468,6 @@ public class Priest {
         DBCollection collection = database.getCollection("LOG");
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("log",log);
-        DBCursor cursor=collection.find(whereQuery);
-        DBObject dbo=cursor.next();
         whereQuery.put("id", "" + this.port);
         updateDataBase(collection, lastTried.getDecree(), whereQuery, "decree");
         /*BasicDBObject newDocument = new BasicDBObject();
