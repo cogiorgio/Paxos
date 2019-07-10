@@ -2,37 +2,19 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="StartPriest:jar" />
+      <artifact name="Paxos:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="05a77f3d-00dc-49a7-9b4d-ca3efc286a8c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest3.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest4.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest4.java" afterDir="false" />
-=======
-    <list default="true" id="05a77f3d-00dc-49a7-9b4d-ca3efc286a8c" name="Default Changelist" comment="Set nextBal = -1 and preVote(-1, &quot;infinity&quot;) when creating a Priest.">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/StartPriest_jar.xml" afterDir="false" />
+    <list default="true" id="e5847040-8d51-4d1d-969c-0ea8fdc20a7a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Paxos_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRunnable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java" afterDir="false" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
     </list>
+    <ignored path="$PROJECT_DIR$/DS/" />
     <ignored path="$PROJECT_DIR$/PaxosDS/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,203 +23,58 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="442">
-              <caret line="101" column="22" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#22692#22693#0" expanded="true" />
-                <element signature="e#22719#22720#0" expanded="true" />
-=======
-            <state relative-caret-position="588">
-              <caret line="492" column="9" lean-forward="true" selection-start-line="492" selection-start-column="9" selection-end-line="492" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="46" column="50" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
-=======
         <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="6" selection-start-line="6" selection-end-line="7" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
-=======
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="750">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-=======
-            <state relative-caret-position="384">
-              <caret line="77" column="25" lean-forward="true" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="364">
+              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRunnable.java">
+        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="427">
-              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-=======
-            <state relative-caret-position="221">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#296#297#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="357">
+              <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>group</find>
-      <find>lastTried</find>
-      <find>-</find>
-      <find>sent</find>
-      <find>send</find>
-      <find>localhost</find>
-      <find>paddress</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Luca Ferrera &lt;luca.ferrera96@gmail.com&gt;" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DS/src/Vote.java" />
-        <option value="$PROJECT_DIR$/DS/src/Ballot.java" />
-        <option value="$PROJECT_DIR$/DS/src/PriestRun.java" />
-        <option value="$PROJECT_DIR$/DS/src/PriestRunnable.java" />
-        <option value="$PROJECT_DIR$/DS/src/Priest.java" />
-        <option value="$PROJECT_DIR$/DS/src/Main.java" />
-        <option value="$PROJECT_DIR$/DS/src/StartPriest2.java" />
-        <option value="$PROJECT_DIR$/DS/src/StartPriest.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/PaxosDS.iml" />
-        <option value="$PROJECT_DIR$/PaxosDS/pom.xml" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Ballot.java" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest2.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest3.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest4.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java" />
         <option value="$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java" />
         <option value="$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java" />
-=======
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest3.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest4.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest2.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRunnable.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java" />
-        <option value="$PROJECT_DIR$/DS/artifacts/Paxos_jar/group.csv" />
-        <option value="$PROJECT_DIR$/DS/artifacts/StartPriest_jar/group.csv" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/resources/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java" />
         <option value="$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java" />
-        <option value="$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
       </list>
     </option>
   </component>
@@ -248,48 +85,17 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
-  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
               <item name="Paxos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Paxos" type="462c0819:PsiDirectoryNode" />
-              <item name="DS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Paxos" type="462c0819:PsiDirectoryNode" />
-              <item name="DS" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Paxos" type="462c0819:PsiDirectoryNode" />
-              <item name="DS" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="StartPriest_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
@@ -317,51 +123,13 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Paxos" type="462c0819:PsiDirectoryNode" />
-              <item name="PaxosDS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Paxos" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Paxos" type="462c0819:PsiDirectoryNode" />
-              <item name="PaxosDS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560209639354" />
-    <property name="last_opened_file_path" value="$USER_HOME$/MDW/middleware_projects/kafka_middleware" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Luca\Documents\Polimi\1 semester\DS\Paxos\DS\src" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -375,691 +143,94 @@
       </list>
     </option>
   </component>
-<<<<<<< HEAD
-  <component name="RunManager" selected="Application.StartPriest3">
-=======
-  <component name="RunManager" selected="Application.StartPriest">
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-    <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ClientApp" />
-      <module name="PaxosDS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="PaxosDS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StartPriest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StartPriest" />
-      <module name="PaxosDS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StartPriest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StartPriest2" />
-      <module name="PaxosDS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StartPriest3" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="12.0.1" />
-      <option name="MAIN_CLASS_NAME" value="StartPriest3" />
-      <module name="PaxosDS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StartPriest4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StartPriest4" />
-      <module name="PaxosDS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.StartPriest3" />
-      <item itemvalue="Application.ClientApp" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.StartPriest2" />
-      <item itemvalue="Application.StartPriest4" />
-<<<<<<< HEAD
-      <item itemvalue="Application.StartPriest" />
-=======
-      <item itemvalue="Application.ClientApp" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.ClientApp" />
-<<<<<<< HEAD
-        <item itemvalue="Application.StartPriest4" />
-=======
-        <item itemvalue="Application.StartPriest" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.StartPriest2" />
-        <item itemvalue="Application.StartPriest4" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="05a77f3d-00dc-49a7-9b4d-ca3efc286a8c" name="Default Changelist" comment="" />
-      <created>1555174415744</created>
+      <changelist id="e5847040-8d51-4d1d-969c-0ea8fdc20a7a" name="Default Changelist" comment="" />
+      <created>1562176542105</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1555174415744</updated>
-      <workItem from="1555174417558" duration="3517000" />
-      <workItem from="1555316285197" duration="9671000" />
-      <workItem from="1555332415661" duration="2835000" />
-      <workItem from="1556281109347" duration="432000" />
-      <workItem from="1556462398871" duration="50000" />
-      <workItem from="1556462682325" duration="2871000" />
-      <workItem from="1556465730989" duration="4494000" />
-      <workItem from="1556470571063" duration="98000" />
-      <workItem from="1556470719971" duration="380000" />
-      <workItem from="1556471186895" duration="1409000" />
-      <workItem from="1556557676906" duration="2372000" />
-      <workItem from="1556876209455" duration="275000" />
-      <workItem from="1556918710891" duration="3828000" />
-      <workItem from="1559289764832" duration="1612000" />
-      <workItem from="1559310741541" duration="5969000" />
-      <workItem from="1559406153528" duration="6426000" />
-      <workItem from="1559488485532" duration="107000" />
-      <workItem from="1559506498067" duration="5534000" />
-      <workItem from="1559572845106" duration="6165000" />
-      <workItem from="1559649258200" duration="4881000" />
-      <workItem from="1559654187962" duration="281000" />
-      <workItem from="1559673933211" duration="8022000" />
+      <updated>1562176542105</updated>
+      <workItem from="1562176543538" duration="277000" />
     </task>
-    <task id="LOCAL-00001" summary="added logic for NextBallot and BeginBallot messages reception">
-      <created>1555177895993</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1555177895993</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Maven added to Project.">
-      <created>1555335132427</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1555335132427</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Set nextBal = -1 and preVote(-1, &quot;infinity&quot;) when creating a Priest.">
-      <created>1556472507472</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1556472507472</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added some print to check the flow. Changed socket port in LastVote and in Voted">
-      <created>1556560037732</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1556560037732</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Priests distribuited">
-      <created>1559317208145</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1559317208146</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Paxos group changed from List of Priest to HashMap of Ip,Port">
-      <created>1559488565908</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1559488565908</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Thread for accepting msg in the main class">
-      <created>1559512505347</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1559512505347</updated>
-    </task>
-    <task id="LOCAL-00008" summary="ClientApp: added showAll&#10;Paxos: List of Pair(ip,port) instead of HashMap for the priest group&#10;ServerAcceptor: added showAll">
-      <created>1559654431886</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1559654431886</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72280000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
     <editor active="true" />
     <layout>
-<<<<<<< HEAD
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22012103" />
-=======
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19879062" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494331" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" visible="true" weight="0.32980132" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32980132" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49546143" weight="0.29459903" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4977307" weight="0.39934534" />
-=======
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3231788" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3986755" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32980132" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.049099836" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49848714" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50226927" side_tool="true" weight="0.39934534" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49848714" weight="0.32569557" />
-=======
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4988662" weight="0.32980132" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5011338" side_tool="true" weight="0.32980132" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4988662" weight="0.3245033" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" weight="0.32955405" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-<<<<<<< HEAD
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-=======
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="added logic for NextBallot and BeginBallot messages reception" />
-    <MESSAGE value="Maven added to Project." />
-    <MESSAGE value="Set nextBal = -1 and preVote(-1, &quot;infinity&quot;) when creating a Priest." />
-    <MESSAGE value="Added some print to check the flow. Changed socket port in LastVote and in Voted" />
-    <MESSAGE value="Priests distribuited" />
-    <MESSAGE value="Paxos group changed from List of Priest to HashMap of Ip,Port" />
-    <MESSAGE value="Thread for accepting msg in the main class" />
-    <MESSAGE value="ClientApp: added showAll&#10;Paxos: List of Pair(ip,port) instead of HashMap for the priest group&#10;ServerAcceptor: added showAll" />
-    <option name="LAST_COMMIT_MESSAGE" value="ClientApp: added showAll&#10;Paxos: List of Pair(ip,port) instead of HashMap for the priest group&#10;ServerAcceptor: added showAll" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java</url>
-          <line>199</line>
-          <properties />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java</url>
-          <line>232</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java</url>
-          <line>49</line>
-          <properties />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="this.group" language="JAVA" />
-        <watch expression="temp" language="JAVA" />
-        <watch expression="address" />
-        <watch expression="port" />
-        <watch expression="priest" />
-        <watch expression="input" language="JAVA" />
-      </configuration>
-    </watches-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="watch">
-      <expression>
-        <expression-string>input</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>temp</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>this.group</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>p.address</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>p.port</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>dbo.get(&quot;nextBallot&quot;).toString()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>lastTried</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>p</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>b</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>l</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>lastTried.getVoting()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>ballotNumber</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Ballot.java" />
-    <entry file="file://$PROJECT_DIR$/Main.java" />
-    <entry file="file://$PROJECT_DIR$/Priest.java" />
-    <entry file="file://$PROJECT_DIR$/Vote.java" />
-    <entry file="file://$PROJECT_DIR$/PriestRunnable.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/io/InputStream.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.base/java/net/ServerSocket.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/net/DualStackPlainSocketImpl.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-9/lib/src.zip!/java.base/java/lang/Thread.java" />
-    <entry file="file://$PROJECT_DIR$/PaxosDS/PaxosDS.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="64" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/pom.xml" />
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/net/Socket.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/util/function/Consumer.java" />
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Vote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Ballot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-=======
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="24" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest4.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="43" lean-forward="true" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-=======
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="747" selection-start-line="747" selection-end-line="747" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_191/src.zip!/java/net/DualStackPlainSocketImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="282" column="22" selection-start-line="282" selection-start-column="22" selection-end-line="282" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.10.2/mongo-java-driver-3.10.2.jar!/com/mongodb/Mongo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="261" selection-start-line="261" selection-end-line="261" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.10.2/mongo-java-driver-3.10.2.jar!/com/mongodb/DB.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.10.2/mongo-java-driver-3.10.2.jar!/com/mongodb/BasicDBObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.10.2/mongo-java-driver-3.10.2.jar!/com/mongodb/DBCollection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="269" selection-start-line="269" selection-end-line="269" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          <folding>
-            <element signature="e#13372#13373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-=======
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.10.2/mongo-java-driver-3.10.2.jar!/com/mongodb/DBCursor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="34">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/3.10.2/mongo-java-driver-3.10.2.jar!/org/bson/BasicBSONObject.class">
+    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          <folding>
-            <element signature="e#1310#1311#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="364">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest2.java">
+    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="170">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-=======
-        <state relative-caret-position="663">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#1298#1299#0" expanded="true" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-<<<<<<< HEAD
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-=======
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#296#297#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DS/artifacts/Paxos_jar/group.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/resources/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DS/artifacts/StartPriest_jar/group.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="427">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-=======
-        <state relative-caret-position="588">
-          <caret line="492" column="9" lean-forward="true" selection-start-line="492" selection-start-column="9" selection-end-line="492" selection-end-column="9" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="750">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-=======
         <state relative-caret-position="357">
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Priest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="101" column="22" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
-=======
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/StartPriest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="6" selection-start-line="6" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Paxos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="77" column="25" lean-forward="true" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
->>>>>>> 2ebe8ce1f7207a101aee56366045d4a082332c7e
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#22692#22693#0" expanded="true" />
-            <element signature="e#22719#22720#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ClientApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="46" column="50" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/ServerAcceptor.java">
+    <entry file="file://$PROJECT_DIR$/PaxosDS/src/main/java/PriestRun.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="42" column="60" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
+          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1069,7 +240,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>StartPriest:jar</last-edited>
+          <last-edited>Paxos:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1082,7 +253,6 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1116,19 +286,6 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Paxos</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>9</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
