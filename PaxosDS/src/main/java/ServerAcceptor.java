@@ -58,7 +58,9 @@ public class ServerAcceptor implements Runnable {
                 } else if (l.length > 1) {
                     if (l[0].equals("commit")) {
                         System.out.println(input.substring(7));
-                        p.startBallot(input.substring(7),"-1");
+                        String res = p.startBallot(input.substring(7),"-1");
+                        System.out.println(res);
+                        out.println(res);
                     }
                     else if (l[0].equals("query")) {
                         System.out.println(l[0]);

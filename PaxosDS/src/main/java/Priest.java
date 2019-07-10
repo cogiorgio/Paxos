@@ -97,7 +97,7 @@ public class Priest {
                 return "done";
             }
         }
-        currentLog+=1;
+        //currentLog+=1;
         /* caso più ottimizzato,nel caso il db è spento e si riaccende
         if(dbo!=null) {
             lastTried = new Ballot("", new LinkedList<Priest>(), parseInt(dbo.get("lastTried").toString()));

@@ -20,7 +20,7 @@ public class ClientApp {
     public static void main(String[] args) throws InterruptedException {
 
         try {
-            Socket s = new Socket("localhost", 3999);
+            Socket s = new Socket("192.168.43.24", 3999);
             PrintWriter outStream = new PrintWriter(s.getOutputStream(), true);
             BufferedReader inStream = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String input="";
@@ -62,6 +62,8 @@ public class ClientApp {
                     if (l[0].equals("commit")) {
                         System.out.println("I'm sending commit");
                         outStream.println(input);
+                        String res =inStream.readLine();
+                        System.out.println(res);
                     }else if (l[0].equals("query")) {
                         System.out.println("I'm sending query for log " + l[1]);
                         outStream.println(input);

@@ -5,17 +5,18 @@ import java.util.*;
 
 public class StartPriest {
     public static void main(String[] args) {
-        Priest p = new Priest("localhost", 4000,"a");
+        Priest p = new Priest("192.168.43.24", 4000,"a");
         LinkedList<Priest> group = new LinkedList();
-        group.add(new Priest("localhost",4001,"b"));
-        group.add(new Priest("localhost",4002,"c"));
-        group.add(new Priest("localhost",4003,"d"));
+        group.add(new Priest("192.168.43.24",4001,"b"));
+        group.add(new Priest("192.168.43.13",4002,"c"));
+        group.add(new Priest("192.168.43.13",4003,"d"));
         /*LinkedList<Priest> group = new LinkedList();
         group.add(new Priest("192.168.43.24",4001,"b"));
         group.add(new Priest("192.168.43.13",4002,"c"));
         group.add(new Priest("192.168.43.13",4003,"d"));*/
         p.setGroup(group);
         p.connect();
+        p.restart();
         p.listen();
         while(true);
         /*String input="";

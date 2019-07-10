@@ -11,10 +11,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Paxos p=new Paxos();
 
-                p.addPriest("localhost", 4000, "a");
-                p.addPriest("localhost", 4001, "b");
-                p.addPriest("localhost", 4002, "c");
-                p.addPriest("localhost", 4003, "d");
+                p.addPriest("192.168.43.24", 4000, "a");
+                p.addPriest("192.168.43.24", 4001, "b");
+                p.addPriest("192.168.43.13", 4002, "c");
+                p.addPriest("192.168.43.13", 4003, "d");
         try {
             ServerSocket serverSocket = new ServerSocket(3999);
             //TODO: togli while true
